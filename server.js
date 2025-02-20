@@ -1,30 +1,27 @@
 const express = require("express");
 const app = express();
-const PORT = 5000;
 const cors = require("cors");
 const routers = require("./routers/routers.js");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const connectDB = require("./database/database.js");
 require("dotenv").config();
-const http = require("http");
-const server = http.createServer(app);
+
 app.use(
   cors({
     origin: ["http://localhost:3000", "http://localhost:3001"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
-    optionSuccessStatus: 200,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
 
-// ตั้งค่า Socket.IO
-
+// Middleware
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use("/api", routers);
 
+// เชื่อมต่อ MongoDB
 const server_two = async () => {
   try {
     await connectDB(process.env.MONGODB_URL);
@@ -35,4 +32,7 @@ const server_two = async () => {
   }
 };
 server_two();
-module.exports =server ;
+
+// อย่าใช้ `server.listen(PORT)`, ให้ใช้ `module.exports = app`
+module.exports = app;
+``
