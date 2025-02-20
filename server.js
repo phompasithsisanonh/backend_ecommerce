@@ -33,6 +33,5 @@ const server_two = async () => {
 };
 server_two();
 
-// อย่าใช้ `server.listen(PORT)`, ให้ใช้ `module.exports = app`
+// ส่งออก `app` เพื่อให้ Vercel ใช้
 module.exports = app;
-``
