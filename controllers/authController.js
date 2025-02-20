@@ -3,7 +3,7 @@ const AdminModel = require("../models/adminModel");
 const sellerCustomerModel = require("../models/chat/sellerCustomerModel");
 const sellerModel = require("../models/sellerModel");
 const { response } = require("../utils/response");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
 const cloudinary = require("cloudinary").v2;
 //registerAdmin

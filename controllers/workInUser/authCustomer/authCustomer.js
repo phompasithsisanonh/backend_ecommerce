@@ -1,5 +1,5 @@
 const formidable = require("formidable");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
 const cloudinary = require("cloudinary").v2;
 
