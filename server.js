@@ -5,31 +5,27 @@ const cors = require("cors");
 const routers = require("./routers/routers.js");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const connectDB =require("./database/database.js");
+const connectDB = require("./database/database.js");
 require("dotenv").config();
-const socket = require('socket.io')
-const http = require('http')
-const server = http.createServer(app)
-const adminSellerMsgSchema =require('./models/chat/adminSeller.js')
+const http = require("http");
+const server = http.createServer(app);
 app.use(
   cors({
-    origin:[ 'http://localhost:3000' , 'http://localhost:3001'],
+    origin: ["http://localhost:3000", "http://localhost:3001"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+    optionSuccessStatus: 200,
+    methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
-const io = socket(server, {
-  cors: {
-      origin: '*',
-      credentials: true
-  }
-})
+
 // ตั้งค่า Socket.IO
 
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use("/api", routers);
 
-const server_two =async()=>{
+const server_two = async () => {
   try {
     await connectDB(process.env.MONGODB_URL);
     console.log("MongoDB connected successfully");
@@ -37,6 +33,6 @@ const server_two =async()=>{
     console.error("DB connection error:", error);
     process.exit(1);
   }
-}
+};
 server_two();
-server.listen(PORT, () => console.log(`server connect in port ${PORT}`));
+module.exports =server ;
