@@ -22,7 +22,7 @@ const PORT =5000;
   // Middleware
   app.use(bodyParser.json());
   app.use(cookieParser());
-  app.use("/api", routers);
+  app.use("/", routers);
 const connectDBd= async()=>{
   try {
     await connectDB(process.env.MONGODB_URL);
