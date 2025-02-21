@@ -10,7 +10,7 @@ const connectDB = require("./database/database.js");
 const PORT =5000;
 
 // เชื่อมต่อ MongoDB
-const server_two = async () => {
+
   app.use(
     cors({
       origin: ["http://localhost:3000", "http://localhost:3001"],
@@ -30,10 +30,8 @@ const server_two = async () => {
     console.error("DB connection error:", error);
     process.exit(1);
   }
-};
-server_two().catch((error) => {
-  console.error("Setup Error:", error);
-  process.exit(1);
-});
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
 // ส่งออก `app` เพื่อให้ Vercel ใช้
 module.exports = app;
