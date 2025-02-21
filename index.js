@@ -19,7 +19,13 @@ const server_two = async () => {
       methods: ["GET", "POST", "PUT", "DELETE"],
     })
   );
-
+  app.get("/", (req, res) => {
+    res.send("Welcome to the E-commerce API");
+  });
+  
+  app.get("/api/test", (req, res) => {
+    res.json({ message: "API is working!" });
+  });
   // Middleware
   app.use(bodyParser.json());
   app.use(cookieParser());
