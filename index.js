@@ -6,7 +6,8 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const connectDB = require("./database/database.js");
 const routers = require("./routers/routers");
-
+const http = require("http");
+const server = http.createServer(app);
 const PORT = process.env.PORT || 5000;
 
 // เชื่อมต่อ MongoDB
@@ -28,7 +29,7 @@ const connectDBd = async () => {
     app.use(cookieParser());
     app.use("/api", routers);  // ตั้งค่า router หลัก
 
-    app.listen(PORT, () => {
+    server.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
 
@@ -41,4 +42,4 @@ const connectDBd = async () => {
 connectDBd();  // เรียกใช้ฟังก์ชั่นเชื่อมต่อกับฐานข้อมูล
 
 // ส่งออก `app` ให้ Vercel ใช้
-module.exports = app;
+module.exports = server ;
