@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const routers = require("./routers/routers");
+const routers = require("./routers/routers.js");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const connectDB = require("./database/database.js");
@@ -32,9 +32,6 @@ const connectDBd= async()=>{
     process.exit(1);
   }
 }
-app.use((req, res) => {
-  res.status(404).send("Route not found");
-});
 connectDBd()
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
