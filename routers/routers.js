@@ -1,3 +1,5 @@
+const express = require("express");
+const router = express.Router();
 const {
   authController,
   authregisteradminController,
@@ -47,8 +49,6 @@ const { get_seller_admin } = require("../controllers/getcontroller_admin");
 const { get_products_For_admin, banner_s, get_banner, delete_image_banner, update_status_buy } = require("../controllers/banner_controller");
 const { dashbord_admin } = require("../controllers/dashbord_admin");
 
-
-const router = require("express").Router();
 //admin
 router.post("/admin-register", authregisteradminController);
 router.post("/admin-login", authController);

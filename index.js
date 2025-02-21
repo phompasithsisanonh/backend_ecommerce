@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const routers = require("./routers/routers.js");
+const routers = require("./routers/routers");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const connectDB = require("./database/database.js");
@@ -19,13 +19,6 @@ const server_two = async () => {
       methods: ["GET", "POST", "PUT", "DELETE"],
     })
   );
-  app.get("/", (req, res) => {
-    res.send("Welcome to the E-commerce API");
-  });
-  
-  app.get("/api/test", (req, res) => {
-    res.json({ message: "API is working!" });
-  });
   // Middleware
   app.use(bodyParser.json());
   app.use(cookieParser());
