@@ -24,7 +24,7 @@ const connectDBd = async () => {
     // Middleware
     app.use(bodyParser.json());
     app.use(cookieParser());
-    app.use("/", routers);
+    app.use("/", require("./routers/routers"));
     await connectDB(process.env.MONGODB_URL);
     console.log("MongoDB connected successfully");
   } catch (error) {
@@ -32,6 +32,8 @@ const connectDBd = async () => {
     process.exit(1);
   }
 };
+
+app.get('/',(req,res) => res.send('Hello Server'))
 connectDBd();
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
