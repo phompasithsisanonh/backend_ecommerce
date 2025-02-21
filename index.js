@@ -26,7 +26,7 @@ const connectDBd = async () => {
     );
     app.use(bodyParser.json());
     app.use(cookieParser());
-    app.use("/", routers);  // ตั้งค่า router หลัก
+    app.use("/api", routers);  // ตั้งค่า router หลัก
 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
