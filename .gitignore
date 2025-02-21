@@ -1,5 +1,1 @@
 .vercel
-./node_modules
-./.next
-git status
-node_modules/
