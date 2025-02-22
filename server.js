@@ -34,8 +34,5 @@ const connectDBd = async () => {
 };
 
 connectDBd(); // เรียกใช้ฟังก์ชั่นเชื่อมต่อกับฐานข้อมูล
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
 // ส่งออก `app` ให้ Vercel ใช้
 module.exports = server;
